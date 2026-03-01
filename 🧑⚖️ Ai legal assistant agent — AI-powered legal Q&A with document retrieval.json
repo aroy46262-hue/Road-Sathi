@@ -1,0 +1,458 @@
+{
+  "name": "🧑‍⚖️ Ai legal assistant agent — AI-powered legal Q&A with document retrieval",
+  "nodes": [
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.response }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "id": "8cbbb27e-5c31-4c8e-93a1-7515b28649b6",
+      "name": "Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        2368,
+        400
+      ],
+      "webhookId": "71cfb848-3fd7-4424-a9e5-663043efc30c",
+      "typeVersion": 1.2,
+      "credentials": {
+        "telegramApi": {
+          "id": "gb2FNsvp9YAt0Zir",
+          "name": "Telegram account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "id": "c664b9b0-cf1b-454c-b943-adcc3f0a8de5",
+      "name": "Telegram Trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "position": [
+        1360,
+        400
+      ],
+      "webhookId": "1a292ca3-348d-43ed-a72e-c55bd312bed1",
+      "typeVersion": 1.2,
+      "credentials": {
+        "telegramApi": {
+          "id": "gb2FNsvp9YAt0Zir",
+          "name": "Telegram account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "Telegram Message Trigger",
+        "height": 636,
+        "width": 340
+      },
+      "id": "f2aff94c-ad46-4759-90f0-368d420219e2",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1216,
+        304
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Legal Asssistant AI Agent",
+        "height": 636,
+        "width": 720,
+        "color": 3
+      },
+      "id": "4eb385e9-5caf-46f3-97a3-bac95c210c78",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1568,
+        304
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Telegram Output",
+        "height": 636,
+        "width": 296,
+        "color": 4
+      },
+      "id": "252a59c6-90aa-4ca4-9a4e-2905b69cc984",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2304,
+        304
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "🧑‍⚖️ Legal Assistant Agent — AI-Powered Legal Q&A with Document Retrieval\nCategory: LegalTech / AI Agent / RAG / Chatbot\n\nDescription:\nThis no-code AI agent acts as a legal assistant chatbot that can answer user queries by retrieving information from a pre-indexed legal document library. It’s powered by OpenAI + Pinecone + Telegram and designed for law firms, compliance teams, or anyone who needs instant answers from contracts, policies, or regulatory documents.\n\nFor more of such builds and step-by-step video tutorial, check out:\nhttps://www.youtube.com/@Automatewithmarc\n\n🔍 How it Works:\n\nTelegram Trigger – Starts when a user sends a message via Telegram.\n\nAI Agent (GPT-4o) – Uses a retrieval-augmented generation (RAG) setup to understand the question and pull relevant context.\n\nPinecone Vector Store – Searches across a vectorized legal contract library for relevant clauses or documents.\n\nOpenAI Embeddings – Converts uploaded documents into vector embeddings for efficient search.\n\nMemory Buffer – Maintains conversation flow and context for follow-up questions.\n\nTelegram Response – Sends the final AI-generated answer directly to the user.\n\n🎯 Use Cases:\n\nIn-house legal teams automating internal policy Q&A\n\nLaw firms building client-facing legal bots\n\nStartups offering legal tech services with document-based queries\n\nCompliance teams monitoring contract terms and obligations\n\n✅ Key Features:\n\nReal-time legal Q&A via Telegram\n\nPinecone + OpenAI-powered vector search\n\nRetrieval-Augmented Generation (RAG) setup\n\nFactual, memory-aware assistant with fallback if info is unavailable\n\nFully customizable and extendable\n\n⚙️ Setup Instructions:\n\nConnect OpenAI, Pinecone, and Telegram credentials\n\nUpload your contracts or policy docs into Pinecone\n\nCustomize the system prompt or expand document sources as needed\n\nActivate and test via Telegram\n\nThis workflow is a solid foundation for any AI-powered legal assistant or chatbot solution—highly relevant for modern LegalOps and knowledge management teams.",
+        "height": 1180,
+        "width": 820,
+        "color": 6
+      },
+      "id": "beaef1c7-48cb-4f35-a0d7-b5819a0e99fe",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        368,
+        240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1hxadnIPr5OUzG8uzx7Di_Buwbr1yybTE",
+          "mode": "list",
+          "cachedResultName": "legal-contract-library",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1hxadnIPr5OUzG8uzx7Di_Buwbr1yybTE"
+        },
+        "event": "fileCreated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        1648,
+        1088
+      ],
+      "id": "097edb11-772e-4eb7-b60f-3f4e1960167e",
+      "name": "Google Drive Trigger",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "XXDW3snaefsKek7Q",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1840,
+        1088
+      ],
+      "id": "8d5a58c3-aaa9-4c26-8f90-d4dddcef3623",
+      "name": "Download file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "XXDW3snaefsKek7Q",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "legal-doc-1",
+          "mode": "list",
+          "cachedResultName": "legal-doc-1"
+        },
+        "embeddingBatchSize": 512,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        2096,
+        1088
+      ],
+      "id": "2d144497-16c6-4a6c-b677-844224227818",
+      "name": "Pinecone Vector Store",
+      "credentials": {
+        "pineconeApi": {
+          "id": "x8sn6kSmxVpbfT8m",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "binary",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        2240,
+        1296
+      ],
+      "id": "7cf05b34-7d6d-47a6-921a-1f77a8108def",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "options": {
+          "dimensions": 512
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        2032,
+        1296
+      ],
+      "id": "5a2873e1-da4e-47cd-aaaa-d58ee1987584",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "k8kIP92DH0V28JcT",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.text }}",
+        "options": {
+          "systemPromptTemplate": "You are  Road Sathi specialized in the Motor Vehicles Act, 1988 (India) and its amendments.\n\nYou provide practical, situation-based legal guidance, not textbook explanations.\n\n⚡ CORE BEHAVIOR\n\nFocus on solving the user’s situation immediately\n\nGive direct, actionable answers\n\nKeep responses:\n\nShort if simple\n\nDetailed only if necessary\n\nThink like a lawyer handling a real case, not a teacher\n\n🔗 CONTEXT USAGE (VERY IMPORTANT)\n\nYou will receive external legal context:\n\n👉 {context}\n\nRules:\n\nUse this as your primary source of truth\n\nIf context contains relevant law → use it\n\nIf context is missing or insufficient → say clearly:\n👉 \"I searched the available legal information but could not find specific details on this.\"\n\nDo NOT invent legal sections or facts\n\n🎯 RESPONSE STYLE\n\nNo fixed format (NO headings unless needed)\n\nNo unnecessary explanation\n\nDirect answer first, explanation only if needed\n\nPrioritize:\n\nWhat the user should do now\n\nWhat law applies (only if relevant)\n\nRisks / consequences\n\n🛑 STRICT LEGAL SAFETY RULES\n\nNever hallucinate laws or sections\n\nNever guarantee legal outcomes\n\nNever give absolute legal advice\n\nAlways include (naturally, not robotic):\n👉 \"This is general legal guidance—consult a lawyer for your specific case.\"\n\n🧠 DECISION LOGIC\n\nIf user is in a problem (accident, fine, licence issue):\n→ Give clear next steps immediately\n\nIf user asks concept:\n→ Give short explanation\n\nIf user is confused or stressed:\n→ Be calm, clear, and practical\n\nIf question is vague:\n→ Ask only 1–2 necessary questions\n\n❌ AVOID\n\nLong structured answers\n\nLegal textbook tone\n\nRepeating obvious info\n\nOver-explaining\n\n✅ GOOD RESPONSE EXAMPLES\n\nUser: “My licence expired yesterday, can I drive?”\n→\n\"Yes, you typically have a 30-day grace period, but you should renew it immediately to avoid penalties. Don't delay beyond that.\"\n\nUser: “Accident ho gaya, what should I do?”\n→\n\"First ensure everyone is safe, then call police and file an FIR. Inform your insurance company immediately. Don’t leave the scene—this can create legal trouble.\"\n\n🚨 EDGE CASE HANDLING\n\nIf context is missing:\n→ say clearly you couldn’t find it\n\nIf outside Motor Vehicles Act:\n→ politely refuse"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainRetrievalQa",
+      "typeVersion": 1.7,
+      "position": [
+        1808,
+        400
+      ],
+      "id": "f97d8919-a4f2-4aec-a71c-57f19e0f073e",
+      "name": "Question and Answer Chain"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1696,
+        608
+      ],
+      "id": "9caeb378-1363-4348-8992-e13cce1b1867",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "jX90vMZIwTOi3oC2",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.retrieverVectorStore",
+      "typeVersion": 1,
+      "position": [
+        1952,
+        608
+      ],
+      "id": "f3082f12-6cf1-48b6-a62e-4e90d0f1ae5f",
+      "name": "Vector Store Retriever"
+    },
+    {
+      "parameters": {
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "legal-doc-1",
+          "mode": "list",
+          "cachedResultName": "legal-doc-1"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        1936,
+        752
+      ],
+      "id": "d32199f0-b1c8-4c1b-977e-b41576b3216f",
+      "name": "Pinecone Vector Store1",
+      "credentials": {
+        "pineconeApi": {
+          "id": "x8sn6kSmxVpbfT8m",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "dimensions": 512
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1872,
+        880
+      ],
+      "id": "ed10f382-d96f-414f-9d07-15afa568ad7d",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "k8kIP92DH0V28JcT",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Question and Answer Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive Trigger": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Question and Answer Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store Retriever": {
+      "ai_retriever": [
+        [
+          {
+            "node": "Question and Answer Chain",
+            "type": "ai_retriever",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store1": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Retriever",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Question and Answer Chain": {
+      "main": [
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "e0d4416e-47b4-4c73-bb6d-19464663ab08",
+  "meta": {
+    "templateId": "5294",
+    "templateCredsSetupCompleted": true,
+    "instanceId": "66e3a449e1d4a9b0a2804ede5cb80fe48a7040099daac8340d536f8279a17ac2"
+  },
+  "id": "Kb0GWTNEp7CzCHZz",
+  "tags": []
+}
